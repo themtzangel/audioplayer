@@ -60,6 +60,7 @@
                 t.targetSets[u.targetSetId] && t.targetSets[u.targetSetId].addClass("is-buffering");
             }),
             this.audio.addEventListener("ended", function () {
+                alert("Track ended");
                 1 == t.songs.length || t.isDragging ? t.stopCurrentSongEnded() : t.playNextSong();
             }),
             this.audio.addEventListener("loadedmetadata", function () {
