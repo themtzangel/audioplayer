@@ -60,7 +60,7 @@
                 t.targetSets[u.targetSetId] && t.targetSets[u.targetSetId].addClass("is-buffering");
             }),
             this.audio.addEventListener("ended", function () {
-                1 == t.songs.length || t.isDragging ? t.stopCurrentSong() : alert("Song has ended!")
+                1 == t.songs.length || t.isDragging ? t.stopCurrentSong() : t.playNextSong();
             }),
             this.audio.addEventListener("loadedmetadata", function () {
                 var e = parseInt(u.audio.duration / 60, 10),
@@ -203,6 +203,7 @@
         },
         stopCurrentSong: function () {
             this.pauseCurrentSong(), (this.getCurrentSong().audio.currentTime = 0);
+            alert("Song stopped")
         },
         pauseCurrentSong: function () {
             this.pauseButton.hide(), this.playButton.show(), (truePlayerManager.activePlayer = null), this.getCurrentSong().audio.pause();
